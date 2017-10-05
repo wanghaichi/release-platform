@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => 'app', 'namespace' => 'Api'], function(){
-    Route::get('info', 'AppController@info');
+    Route::get('info/{id?}', 'AppController@info');
     Route::get('latest-version-code/{id}', "AppController@latestVersionCode");
 });
 

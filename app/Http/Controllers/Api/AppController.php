@@ -10,8 +10,18 @@ use App\Models\Production;
 class AppController extends Controller
 {
     //
-    public function info(){
-        $apps = Production::get()->all();
+    public function info($id = 0){
+        if($id === 0){
+            $apps = Production::get()->all();
+        }
+        else{
+            $apps = Production::where(['id' => $id])->get()->all();
+        }
+        if(!$apps){
+            return response()->json([
+                'message'   =>  'app not found'
+            ]);
+        }
         $apps = array_map(function($app){
             $app = Resources::Production($app);
             $logs = Log::where(['pid' => $app['id'], 'type' => 'android'])->orderBy('version', 'desc')->orderBy('version_code', 'desc')->get()->all();
@@ -48,4 +58,5 @@ class AppController extends Controller
             'versionCode'   =>  $log['versionCode']
         ]);
     }
+
 }
