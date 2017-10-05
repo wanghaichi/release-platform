@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
 
-Route::group(['prefix' => 'app', 'namespace' => 'Api'], function(){
+Route::group(['prefix' => 'app', 'namespace' => 'Api', 'middleware' => ['cors']], function(){
     Route::get('info/{id?}', 'AppController@info');
     Route::get('latest-version-code/{id}', "AppController@latestVersionCode");
 });
