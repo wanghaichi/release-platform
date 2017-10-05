@@ -22,7 +22,7 @@ Route::get('/', function () {
 Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware' => 'auth'], function(){
     Route::get('/', 'IndexController@index');
     Route::get('/detail/{id}', 'AppController@index');
-    Route::get('/edit', 'AppController@editPage');
+    Route::get('/edit/{id}', 'AppController@editPage');
     Route::post('/file', 'FileController@upload');
     Route::post('/edit', 'AppController@store');
 

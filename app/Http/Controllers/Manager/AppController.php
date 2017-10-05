@@ -19,8 +19,7 @@ class AppController extends Controller
         return view('manager.detail', ['app' => $app]);
     }
 
-    public function editPage(){
-        $id = 1;
+    public function editPage($id){
         $app = Production::findOrFail($id);
         $app = Resources::Production($app);
 

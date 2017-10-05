@@ -11,7 +11,7 @@
             <small>{{ $app['slogan'] }}</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{{ url('manager/edit') }}"><button type="button" class="btn btn-block btn-primary btn-xs">修改</button></a></li>
+            <li><a href="{{ url('manager/edit/'.$app['id']) }}"><button type="button" class="btn btn-block btn-primary btn-xs">修改</button></a></li>
         </ol>
     </section>
     <section class="content">
