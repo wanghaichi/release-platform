@@ -29,7 +29,7 @@ class AppController extends Controller
             if($app['picId']){
                 $pic = File::findOrFail($app['picId']);
                 $pic = Resources::File($pic);
-                $pic['path'] = env('APP_URL') . "/" .  $pic['path'];
+                $pic['path'] = env('APP_URL') . "/storage/" .  $pic['path'];
                 $app['pic'] = $pic;
             }
             $logs = Log::where(['pid' => $app['id'], 'type' => 'android'])->orderBy('version', 'desc')->orderBy('version_code', 'desc')->get()->all();
