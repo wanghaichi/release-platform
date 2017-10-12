@@ -29,12 +29,13 @@ class AppController extends Controller
             if($app['picId']){
                 $pic = File::findOrFail($app['picId']);
                 $pic = Resources::File($pic);
+                $pic['path'] = env('APP_URL') . "/" .  $pic['path'];
                 $app['pic'] = $pic;
             }
             $logs = Log::where(['pid' => $app['id'], 'type' => 'android'])->orderBy('version', 'desc')->orderBy('version_code', 'desc')->get()->all();
             $app['logs']['android'] = array_map(function($log){
                 $log = Resources::Log($log);
-                $log['path'] = "/storage/". $log['path'];
+                $log['path'] = env('APP_URL') . "/storage/". $log['path'];
                 return $log;
             }, $logs);
             $logs = Log::where(['pid' => $app['id'], 'type' => 'ios'])->orderBy('version', 'desc')->get()->all();
