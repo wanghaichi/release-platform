@@ -28,7 +28,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Version</label>
-                                <input id="version" name="version" type="text" class="form-control" placeholder="v1.1.0">
+                                <input id="version" name="version" type="text" class="form-control" placeholder="1.1.0">
                             </div>
                             <div class="form-group">
                                 <label>更新说明</label>
