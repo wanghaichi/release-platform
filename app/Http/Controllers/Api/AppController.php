@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Helpers\Resources;
+use App\Models\File;
 use App\Models\Log;
 use App\Http\Controllers\Controller;
 use App\Models\Production;
@@ -24,6 +25,12 @@ class AppController extends Controller
         }
         $apps = array_map(function($app){
             $app = Resources::Production($app);
+            $app['pic'] = null;
+            if($app['picId']){
+                $pic = File::findOrFail($app['picId']);
+                $pic = Resources::File($pic);
+                $app['pic'] = $pic;
+            }
             $logs = Log::where(['pid' => $app['id'], 'type' => 'android'])->orderBy('version', 'desc')->orderBy('version_code', 'desc')->get()->all();
             $app['logs']['android'] = array_map(function($log){
                 $log = Resources::Log($log);
