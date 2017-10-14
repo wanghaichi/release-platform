@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'app', 'namespace' => 'Api', 'middleware' => ['cors']], function(){
     Route::get('info/{id?}', 'AppController@info');
-    Route::get('latest-version-code/{id}', "AppController@latestVersionCode");
+    Route::get('latest-version/{id}', "AppController@latestVersionCode");
 });
 
 
