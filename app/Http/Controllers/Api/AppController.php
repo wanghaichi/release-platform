@@ -63,7 +63,7 @@ class AppController extends Controller
         $log = Resources::Log($log);
         return response()->json([
             'success'       =>  1,
-            'versionCode'   =>  $log['versionCode']
+            'info'   =>  $log
         ]);
     }
 
