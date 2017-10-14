@@ -61,6 +61,7 @@ class AppController extends Controller
             ]);
         }
         $log = Resources::Log($log);
+        $log['path'] = env('APP_RUL') . "/storage/" . $log['path'];
         return response()->json([
             'success'       =>  1,
             'info'   =>  $log
